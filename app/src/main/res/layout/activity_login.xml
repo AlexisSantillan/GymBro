@@ -2,38 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:fitsSystemWindows="true">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo" />
+        android:src="@drawable/usuario" />
 
     <Button
         android:id="@+id/buttonIniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="30dp"
         android:background="@android:color/transparent"
         android:text="INICIAR SESION"
         android:textColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/buttonSaberMas"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="15dp"
-        android:background="@android:color/transparent"
-        android:text="Saber Mas"
-        android:textColor="@android:color/red" />
-
-    <!-- Aquí van otros elementos de tu diseño -->
 
 </RelativeLayout>
