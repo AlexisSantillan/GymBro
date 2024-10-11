@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <EditText
+        android:id="@+id/editTextNombreEjercicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del ejercicio"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#757575"/>
+
+    <EditText
+        android:id="@+id/editTextSeries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Número de series"
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#757575"/>
+
+    <EditText
+        android:id="@+id/editTextRepeticiones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Repeticiones por serie"
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#757575"/>
+
+    <EditText
+        android:id="@+id/editTextPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Peso (kg)"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#757575"/>
+
+    <EditText
+        android:id="@+id/editTextDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripcion"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#757575"/>
+
+</LinearLayout>
