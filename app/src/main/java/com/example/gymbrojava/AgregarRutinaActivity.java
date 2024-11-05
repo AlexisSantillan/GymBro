@@ -136,7 +136,6 @@ public class AgregarRutinaActivity extends AppCompatActivity {
         // }
 
         Toast.makeText(this, "Rutina guardada: " + nombreRutina + ", Objetivo: " + objetivo + ", Dificultad: " + nivelDificultad, Toast.LENGTH_LONG).show();
-        finish();
         editTextNombreRutina.setText("");
         editTextDuracion.setText("");
         editTextFrecuencia.setText("");

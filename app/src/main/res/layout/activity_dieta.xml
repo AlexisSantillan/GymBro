@@ -13,6 +13,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/dieta" />
 
+
     <Button
         android:id="@+id/clasesButton"
         android:layout_width="0dp"
