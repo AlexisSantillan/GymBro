@@ -6,95 +6,229 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#1C1C1C"
     tools:context=".AgregarGymbroActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="Agregar Gymbro"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNombre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
-
-    <EditText
-        android:id="@+id/editTextNombre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D32F2F"
-        android:hint="Nombre"
-        android:inputType="text"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#757575"
+        android:layout_marginTop="24dp"
+        android:text="AGREGAR GYMBRO"
+        android:textColor="#FF0000"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextCorreo"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/subtitleText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D32F2F"
-        android:hint="Correo electrónico"
-        android:inputType="textEmailAddress"
-        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Complete los datos del nuevo gymbro"
         android:textColor="#FFFFFF"
-        android:textColorHint="#757575"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
 
-    <EditText
-        android:id="@+id/editTextContrasena"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewContent"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D32F2F"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#2E2E2E"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/subtitleText"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAgregarGymbro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextCorreo" />
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INFORMACIÓN PERSONAL"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ingrese los datos personales del gymbro"
+                    android:textColor="#757575"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Nombre"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
+                    android:drawableLeft="@drawable/coach"
+                    android:drawablePadding="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Apellidos"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
+                    android:drawableLeft="@drawable/coach"
+                    android:drawablePadding="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INFORMACIÓN DE CONTACTO"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ingrese los datos de contacto"
+                    android:textColor="#757575"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Dirección"
+                    android:inputType="textPostalAddress"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
+                    android:drawableLeft="@drawable/direccion"
+                    android:drawablePadding="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Correo electrónico"
+                    android:inputType="textEmailAddress"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
+                    android:drawableLeft="@drawable/mail"
+                    android:drawablePadding="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INFORMACIÓN DE CUENTA"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ingrese los datos de la cuenta"
+                    android:textColor="#757575"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Nombre de usuario"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
+                    android:drawableLeft="@drawable/coach"
+                    android:drawablePadding="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
+                    android:drawableLeft="@drawable/coach"
+                    android:drawablePadding="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/buttonAgregarGymbro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="#D32F2F"
-        android:fontFamily="sans-serif-medium"
         android:padding="12dp"
-        android:text="Agregar Gymbro"
+        android:text="AGREGAR GYMBRO"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAtras" />
+        android:drawableLeft="@drawable/ic_add_class"
+        android:drawablePadding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAtras"/>
 
     <Button
         android:id="@+id/buttonAtras"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:backgroundTint="#757575"
-        android:fontFamily="sans-serif-medium"
         android:padding="12dp"
-        android:text="Atrás"
+        android:text="VOLVER"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_back"
+        android:drawablePadding="8dp"
         android:onClick="openPantallaInicio"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

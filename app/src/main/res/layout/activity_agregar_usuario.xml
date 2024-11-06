@@ -5,76 +5,144 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="#1C1C1C"
     tools:context=".AgregarUsuarioActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="Agregar Usuario"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="GESTIÓN DE USUARIOS"
+        android:textColor="#FF0000"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonAgregarCoach"
+    <TextView
+        android:id="@+id/subtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Seleccione el tipo de usuario a agregar"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCoach"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="108dp"
-        android:backgroundTint="#D32F2F"
-        android:fontFamily="sans-serif-medium"
-        android:padding="12dp"
-        android:text="Agregar Coach"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:onClick="openAgregarCoachActivity"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAgregarGymbro"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="48dp"
+        app:cardBackgroundColor="#2E2E2E"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtitleText">
 
-    <Button
-        android:id="@+id/buttonAgregarGymbro"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AGREGAR COACH"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Registro de nuevo entrenador"
+                android:textColor="#757575"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/buttonAgregarCoach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#D32F2F"
+                android:onClick="openAgregarCoachActivity"
+                android:text="REGISTRAR"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardGymbro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="292dp"
-        android:backgroundTint="#2196F3"
-        android:fontFamily="sans-serif-medium"
-        android:padding="12dp"
-        android:text="Agregar Gymbro"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:onClick="openAgregarGymBroActivity"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAtras"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="#2E2E2E"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardCoach">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AGREGAR GYMBRO"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Registro de nuevo miembro"
+                android:textColor="#757575"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/buttonAgregarGymbro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#4CAF50"
+                android:onClick="openAgregarGymBroActivity"
+                android:text="REGISTRAR"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/buttonAtras"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_margin="8dp"
         android:backgroundTint="#757575"
-        android:fontFamily="sans-serif-medium"
+        android:onClick="atras"
         android:padding="12dp"
-        android:text="Atrás"
+        android:text="VOLVER"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        android:onClick="atras"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

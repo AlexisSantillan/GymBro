@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Inicializar DatabaseHelper
-        DatabaseHelper.getInstance(this);
+
     }
 }

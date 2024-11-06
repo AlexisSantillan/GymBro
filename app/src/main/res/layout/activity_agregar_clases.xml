@@ -6,125 +6,216 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#1C1C1C"
     tools:context=".AgregarClasesActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="Agregar Clases"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/editTextNombreClase"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="AGREGAR CLASE"
+        android:textColor="#FF0000"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextNombreClase"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/subtitleText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D32F2F"
-        android:hint="Nombre de la clase"
-        android:inputType="text"
-        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Complete los datos de la nueva clase"
         android:textColor="#FFFFFF"
-        android:textColorHint="#757575"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
 
-    <EditText
-        android:id="@+id/editTextDiaClase"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewContent"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D32F2F"
-        android:hint="Día de la clase"
-        android:inputType="date"
-        android:focusable="false"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#2E2E2E"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/subtitleText"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAgregarClase"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextNombreClase" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <EditText
-        android:id="@+id/editTextHorarioClase"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D32F2F"
-        android:hint="Horario de la clase"
-        android:inputType="time"
-        android:focusable="false"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextDiaClase" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editTextCupoMaximo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D32F2F"
-        android:hint="Cupo máximo"
-        android:inputType="number"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextHorarioClase" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
 
-    <EditText
-        android:id="@+id/editTextCoach"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#D32F2F"
-        android:hint="Coach"
-        android:inputType="text"
-        android:padding="12dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextCupoMaximo" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="INFORMACIÓN BÁSICA"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ingrese los detalles principales de la clase"
+                    android:textColor="#757575"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextNombreClase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Nombre de la clase"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
+                    android:layout_marginBottom="16dp"
+                    android:drawableLeft="@drawable/ic_routine_name"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PROGRAMACIÓN"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Configure el horario y día de la clase"
+                    android:textColor="#757575"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextDiaClase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Día de la clase"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#757575"
+                    android:drawableLeft="@drawable/day"
+                    android:drawablePadding="8dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextHorarioClase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Horario de la clase"
+                    android:inputType="time"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:drawableLeft="@drawable/ic_duration"
+                    android:drawablePadding="8dp"
+                    android:textColorHint="#757575"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CAPACIDAD Y ASIGNACIÓN"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Establezca el cupo y el instructor"
+                    android:textColor="#757575"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextCupoMaximo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Cupo máximo"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:drawableLeft="@drawable/cupo"
+                    android:drawablePadding="8dp"
+                    android:textColorHint="#757575"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/editTextCoach"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D32F2F"
+                    android:hint="Coach asignado"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:textColor="#FFFFFF"
+                    android:drawableLeft="@drawable/coach"
+                    android:drawablePadding="8dp"
+                    android:textColorHint="#757575"
+                    android:layout_marginBottom="16dp"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/buttonAgregarClase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="#D32F2F"
-        android:fontFamily="sans-serif-medium"
         android:padding="12dp"
-        android:text="Agregar Clase"
+        android:text="AGREGAR CLASE"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAtras" />
+        android:drawableLeft="@drawable/ic_add_class"
+        android:drawablePadding="8dp"
+        android:onClick="agregarClase"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAtras"/>
 
     <Button
         android:id="@+id/buttonAtras"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:backgroundTint="#757575"
-        android:fontFamily="sans-serif-medium"
         android:padding="12dp"
-        android:text="Atrás"
+        android:text="VOLVER"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_back"
+        android:drawablePadding="8dp"
         android:onClick="openPantallaInicio"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

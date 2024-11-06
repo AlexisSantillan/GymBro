@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(), "Autenticación exitosa!", Toast.LENGTH_SHORT).show();
                 // Redirigir a otra actividad si la autenticación es exitosa
-                Intent intent = new Intent(LoginActivity.this, ClasesActivity.class);
+                Intent intent = new Intent(LoginActivity.this, PantallaInicioActivity.class);
                 startActivity(intent);
                 finish();
             }
