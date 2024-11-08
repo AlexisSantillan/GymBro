@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -22,10 +23,13 @@ import java.util.List;
 public class AgregarDietaActivity extends AppCompatActivity {
 
     private EditText editTextNombreDieta, editTextCalorias, editTextDuracion;
+    private AutoCompleteTextView autoCompleteUsuario;
     private Spinner spinnerObjetivo;
     private Button buttonAgregarComida, buttonAgregarDieta, buttonAtras;
     private LinearLayout layoutComidas;
     private List<View> comidasViews;
+    private List<Usuario> listaUsuarios;
+    private Usuario usuarioSeleccionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,7 @@ public class AgregarDietaActivity extends AppCompatActivity {
 
         // Inicializar vistas
         editTextNombreDieta = findViewById(R.id.editTextNombreDieta);
+        autoCompleteUsuario = findViewById(R.id.autoCompleteUsuario);
         editTextCalorias = findViewById(R.id.editTextCalorias);
         editTextDuracion = findViewById(R.id.editTextDuracion);
         spinnerObjetivo = findViewById(R.id.spinnerObjetivo);
@@ -43,6 +48,13 @@ public class AgregarDietaActivity extends AppCompatActivity {
         layoutComidas = findViewById(R.id.layoutComidas);
 
         comidasViews = new ArrayList<>();
+        listaUsuarios = new ArrayList<>();
+
+        // Cargar usuarios (esto debería venir de tu base de datos)
+        cargarUsuarios();
+
+        // Configurar AutoCompleteTextView
+        setupAutoComplete();
 
         // Configurar spinner
         setupSpinner();
@@ -51,6 +63,40 @@ public class AgregarDietaActivity extends AppCompatActivity {
         buttonAgregarComida.setOnClickListener(v -> agregarComidaView());
         buttonAgregarDieta.setOnClickListener(v -> guardarDieta());
         buttonAtras.setOnClickListener(v -> finish());
+    }
+
+    private void cargarUsuarios() {
+        // Obtener la lista de Gymbros desde AgregarGymbroActivity
+        List<Gymbro> gymbros = AgregarGymbroActivity.getListaGymbros();
+
+        // Limpiar la lista actual de usuarios
+        listaUsuarios.clear();
+
+        // Convertir cada Gymbro a Usuario y agregarlo a la lista
+        for (Gymbro gymbro : gymbros) {
+            listaUsuarios.add(new Usuario(
+                    gymbro.getId(),
+                    gymbro.getNombre(),
+                    gymbro.getApellido(),
+                    gymbro.getUsuario()
+            ));
+        }
+    }
+
+    private void setupAutoComplete() {
+        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_dropdown_item_1line,
+                listaUsuarios
+        );
+        autoCompleteUsuario.setAdapter(adapter);
+
+        autoCompleteUsuario.setOnItemClickListener((parent, view, position, id) -> {
+            usuarioSeleccionado = (Usuario) parent.getItemAtPosition(position);
+            Toast.makeText(AgregarDietaActivity.this,
+                    "Usuario seleccionado: " + usuarioSeleccionado.getNombre(),
+                    Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void setupSpinner() {
@@ -63,8 +109,6 @@ public class AgregarDietaActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedObjetivo = parent.getItemAtPosition(position).toString();
-                Toast.makeText(AgregarDietaActivity.this, "Objetivo seleccionado: " + selectedObjetivo, Toast.LENGTH_SHORT).show();
-
                 if (view instanceof TextView) {
                     ((TextView) view).setTextColor(Color.WHITE);
                 }
@@ -81,7 +125,6 @@ public class AgregarDietaActivity extends AppCompatActivity {
         layoutComidas.addView(comidaView);
         comidasViews.add(comidaView);
 
-        // Configurar el TimePicker para el horario de la comida
         EditText editTextHorario = comidaView.findViewById(R.id.editTextHorario);
         setupTimePicker(editTextHorario);
     }
@@ -108,32 +151,42 @@ public class AgregarDietaActivity extends AppCompatActivity {
         String calorias = editTextCalorias.getText().toString().trim();
         String duracion = editTextDuracion.getText().toString().trim();
 
-        if (nombreDieta.isEmpty() || calorias.isEmpty() || duracion.isEmpty() || comidasViews.isEmpty()) {
-            Toast.makeText(this, "Por favor, complete todos los campos y agregue al menos una comida", Toast.LENGTH_SHORT).show();
+        if (nombreDieta.isEmpty() || calorias.isEmpty() || duracion.isEmpty() ||
+                comidasViews.isEmpty() || usuarioSeleccionado == null) {
+            Toast.makeText(this,
+                    "Por favor, complete todos los campos, seleccione un usuario y agregue al menos una comida",
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Aquí iría la lógica para guardar la dieta en la base de datos
         // Por ejemplo:
-        // Dieta nuevaDieta = new Dieta(nombreDieta, objetivo, Integer.parseInt(calorias), Integer.parseInt(duracion));
+        // Dieta nuevaDieta = new Dieta(
+        //     nombreDieta,
+        //     objetivo,
+        //     Integer.parseInt(calorias),
+        //     Integer.parseInt(duracion),
+        //     usuarioSeleccionado.getId()
+        // );
         // long dietaId = database.insertDieta(nuevaDieta);
-        //
-        // for (View comidaView : comidasViews) {
-        //     String nombreComida = ((EditText) comidaView.findViewById(R.id.editTextNombreComida)).getText().toString();
-        //     String horario = ((EditText) comidaView.findViewById(R.id.editTextHorario)).getText().toString();
-        //     String caloriasComida = ((EditText) comidaView.findViewById(R.id.editTextCaloriasComida)).getText().toString();
-        //
-        //     Comida nuevaComida = new Comida(dietaId, nombreComida, horario, Integer.parseInt(caloriasComida));
-        //     database.insertComida(nuevaComida);
-        // }
 
-        Toast.makeText(this, "Dieta guardada: " + nombreDieta + ", Objetivo: " + objetivo, Toast.LENGTH_LONG).show();
+        Toast.makeText(this,
+                "Dieta guardada para usuario: " + usuarioSeleccionado.getNombre() +
+                        "\nDieta: " + nombreDieta +
+                        "\nObjetivo: " + objetivo,
+                Toast.LENGTH_LONG).show();
 
         // Limpia los campos después de guardar
+        limpiarCampos();
+    }
+
+    private void limpiarCampos() {
         editTextNombreDieta.setText("");
+        autoCompleteUsuario.setText("");
         editTextCalorias.setText("");
         editTextDuracion.setText("");
         layoutComidas.removeAllViews();
         comidasViews.clear();
+        usuarioSeleccionado = null;
     }
 }

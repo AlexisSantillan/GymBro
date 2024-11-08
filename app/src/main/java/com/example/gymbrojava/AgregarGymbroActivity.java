@@ -6,20 +6,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AgregarGymbroActivity extends AppCompatActivity {
 
     private EditText editTextNombre, editTextApellido, editTextDireccion,
             editTextCorreo, editTextUsuario, editTextContrasena;
     private Button buttonAgregarGymbro, buttonAtras;
+
+    // Lista estática para mantener los gymbros en memoria
+    private static List<Gymbro> listaGymbros = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +47,8 @@ public class AgregarGymbroActivity extends AppCompatActivity {
         buttonAtras = findViewById(R.id.buttonAtras);
 
         // Configurar listeners
-        buttonAgregarGymbro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                agregarGymbro();
-            }
-        });
-
-        buttonAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openPantallaInicio();
-            }
-        });
+        buttonAgregarGymbro.setOnClickListener(v -> agregarGymbro());
+        buttonAtras.setOnClickListener(v -> openPantallaInicio());
     }
 
     private void agregarGymbro() {
@@ -87,16 +79,46 @@ public class AgregarGymbroActivity extends AppCompatActivity {
             return;
         }
 
-        // Aquí iría la lógica para guardar el gymbro en la base de datos
-        // Por ejemplo:
-        // Gymbro nuevoGymbro = new Gymbro(nombre, apellido, direccion, correo, usuario, contrasena, LocalDateTime.now(), "activo");
-        // database.insertGymbro(nuevoGymbro);
+        // Verificar si el usuario ya existe
+        if (existeUsuario(usuario)) {
+            Toast.makeText(this, "Este nombre de usuario ya está en uso", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Crear y guardar el nuevo gymbro
+        Gymbro nuevoGymbro = new Gymbro(
+                listaGymbros.size() + 1, // ID simple
+                nombre,
+                apellido,
+                direccion,
+                correo,
+                usuario,
+                contrasena,
+                LocalDateTime.now(),
+                "activo"
+        );
+
+        listaGymbros.add(nuevoGymbro);
 
         // Mostrar mensaje de éxito
-        Toast.makeText(this, "Gymbro agregado exitosamente", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Gymbro agregado exitosamente\nTotal Gymbros: " + listaGymbros.size(), Toast.LENGTH_SHORT).show();
 
         // Limpiar los campos después de guardar
         limpiarCampos();
+    }
+
+    private boolean existeUsuario(String usuario) {
+        for (Gymbro gymbro : listaGymbros) {
+            if (gymbro.getUsuario().equals(usuario)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Método público estático para acceder a la lista desde otras actividades
+    public static List<Gymbro> getListaGymbros() {
+        return listaGymbros;
     }
 
     private void limpiarCampos() {
@@ -111,6 +133,6 @@ public class AgregarGymbroActivity extends AppCompatActivity {
     private void openPantallaInicio() {
         Intent intent = new Intent(this, AgregarUsuarioActivity.class);
         startActivity(intent);
-        finish(); // Cierra esta actividad
+        finish();
     }
 }

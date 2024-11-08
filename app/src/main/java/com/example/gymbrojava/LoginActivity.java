@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 // Redirigir a otra actividad si la autenticación es exitosa
                 Intent intent = new Intent(LoginActivity.this, PantallaInicioActivity.class);
                 startActivity(intent);
-                finish();
+
             }
 
             @Override
@@ -98,13 +98,13 @@ public class LoginActivity extends AppCompatActivity {
             if (username.equals("admin") && password.equals("1234")) {
                 Intent intent = new Intent(LoginActivity.this, PantallaInicioActivity.class);
                 startActivity(intent);
-                finish();
+
                 dialog.dismiss(); // Cerramos el diálogo
             }
             else if (username.equals("user") && password.equals("1234")) {
                 Intent intent = new Intent(LoginActivity.this, ClasesActivity.class);
                 startActivity(intent);
-                finish();
+
                 dialog.dismiss(); // Cerramos el diálogo
             }
             else {

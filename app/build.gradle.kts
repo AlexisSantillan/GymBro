@@ -36,6 +36,7 @@ android {
 
 dependencies {
     implementation("androidx.biometric:biometric:1.1.0")
+    implementation ("com.google.android.material:material:1.5.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

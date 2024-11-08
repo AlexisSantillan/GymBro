@@ -52,5 +52,14 @@
             android:padding="12dp"
             android:layout_marginTop="8dp"/>
 
+        <Button
+            android:id="@+id/buttonEliminarComida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar"
+            android:backgroundTint="#D32F2F"
+            android:textColorHint="#757575"
+            android:layout_marginTop="8dp"/>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
