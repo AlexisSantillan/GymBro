@@ -121,12 +121,25 @@ public class AgregarDietaActivity extends AppCompatActivity {
     }
 
     private void agregarComidaView() {
-        View comidaView = getLayoutInflater().inflate(R.layout.item_comida, null);
-        layoutComidas.addView(comidaView);
-        comidasViews.add(comidaView);
+        try {
+            View comidaView = getLayoutInflater().inflate(R.layout.item_comida, null);
+            layoutComidas.addView(comidaView);
+            comidasViews.add(comidaView);
 
-        EditText editTextHorario = comidaView.findViewById(R.id.editTextHorario);
-        setupTimePicker(editTextHorario);
+            EditText editTextHorario = comidaView.findViewById(R.id.editTextHorario);
+            setupTimePicker(editTextHorario);
+
+            // Agregar botón para eliminar comida
+            Button buttonEliminar = comidaView.findViewById(R.id.buttonEliminarComida);
+            if (buttonEliminar != null) {
+                buttonEliminar.setOnClickListener(v -> {
+                    layoutComidas.removeView(comidaView);
+                    comidasViews.remove(comidaView);
+                });
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al agregar comida: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setupTimePicker(EditText editTextHorario) {

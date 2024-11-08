@@ -142,9 +142,24 @@ public class AgregarRutinaActivity extends AppCompatActivity {
     }
 
     private void agregarEjercicioView() {
-        View ejercicioView = getLayoutInflater().inflate(R.layout.item_ejercicio, null);
-        layoutEjercicios.addView(ejercicioView);
-        ejerciciosViews.add(ejercicioView);
+
+        try {
+            View ejercicioView = getLayoutInflater().inflate(R.layout.item_ejercicio, null);
+            layoutEjercicios.addView(ejercicioView);
+            ejerciciosViews.add(ejercicioView);
+
+
+            // Agregar botón para eliminar comida
+            Button buttonEliminar = ejercicioView.findViewById(R.id.buttonEliminarEjercicio);
+            if (buttonEliminar != null) {
+                buttonEliminar.setOnClickListener(v -> {
+                    layoutEjercicios.removeView(ejercicioView);
+                    ejerciciosViews.remove(ejercicioView);
+                });
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al agregar comida: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void guardarRutina() {
